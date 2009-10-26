@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.bluecasedevelopment.example3"
+      android:versionCode="1"
+      android:versionName="1.0">
+      <uses-permission android:name="android.permission.INTERNET" />
+    <application android:icon="@drawable/icon" android:label="@string/app_name">
+        <activity android:name=".ItemList"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER"></category>
+            </intent-filter>
+         <intent-filter>
+        	<action android:name="android.intent.action.VIEW"></action>
+			<data android:mimeType="vnd.android.cursor.dir/vnd.bluecasedevelopment.example3.repair"></data>
+			<category android:name="android.intent.category.DEFAULT"></category>
+		</intent-filter>
+        </activity>
+        <activity android:name=".EditItem" android:label="@string/app_name">
+	        <intent-filter>
+	        	<action android:name="android.intent.action.EDIT"></action>
+	        	<action android:name="android.intent.action.INSERT"></action>
+				<data android:mimeType="vnd.android.cursor.item/vnd.bluecasedevelopment.example3.repair"></data>
+				<category android:name="android.intent.category.DEFAULT"></category>
+			</intent-filter>
+        </activity>
+        <activity android:name=".ViewItem" android:label="@string/app_name">
+	        <intent-filter>
+	        	<action android:name="android.intent.action.VIEW"></action>
+				<data android:mimeType="vnd.android.cursor.item/vnd.bluecasedevelopment.example3.repair"></data>
+				<category android:name="android.intent.category.DEFAULT"></category>
+			</intent-filter>
+        </activity>        
+    	<provider android:name=".RepairProvider" android:authorities="com.bluecasedevelopment.example3"></provider>
+	    <receiver android:name=".RepairReceiver">
+	    	<intent-filter>
+	        	<action android:name="android.intent.action.EDIT"></action>
+	        	<action android:name="android.intent.action.INSERT"></action>
+	        	<action android:name="android.intent.action.DELETE"></action>
+				<data android:mimeType="vnd.android.cursor.item/vnd.bluecasedevelopment.example3.repair"></data>
+	    	</intent-filter>
+		</receiver>
+		<service android:name=".RepairReportService">
+			<intent-filter>
+				<category android:name="android.intent.category.DEFAULT"></category>
+			</intent-filter>
+		</service>
+</application>
+    <uses-sdk android:minSdkVersion="4" />
+
+
+</manifest> 
